@@ -1,0 +1,8 @@
+{
+  "name": "kazbeacon",
+  "description": "kazbeacon",
+  "main": "index.js",
+  "dependencies": {
+    "tabris": "^1.1.0"
+  }
+}
