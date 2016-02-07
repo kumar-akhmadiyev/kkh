@@ -1,4 +1,5 @@
 var actions = require('./actions.js');
+var IMAGE_PATH = "images/";
 module.exports = {
   create: function(pages){
     console.log(pages)
@@ -7,21 +8,25 @@ module.exports = {
     var cv = tabris.create("CollectionView", {
         layoutData: {left: 0, top: 0, right: 0, bottom: 0},
         items: actions,
-        itemHeight: 256,
+        itemHeight: 250,
         initializeCell: function(cell) {
-          var companyView = tabris.create("TextView", {
-            layoutData: {top: 16, centerX: 0, width: 200, height: 200},
+          var imageView = tabris.create("ImageView", {
+            layoutData: {top:0,left:0,right:0,height:200},
+            scaleMode: 'fill'
+          }).appendTo(cell);
+          var logoView = tabris.create("ImageView", {
+            layoutData: {top: 8, left:8, width: 100, height: 50},
+          }).appendTo(cell);
+          var actionView = tabris.create("TextView", {
+            layoutData: {left: 0, top: [imageView, 0], right: 0,height:50},
             background:"#cecece",
             alignment: "center"
           }).appendTo(cell);
-          var actionView = tabris.create("TextView", {
-            layoutData: {left: 30, top: [companyView, 16], right: 30},
-            background:"green",
-            alignment: "center"
-          }).appendTo(cell);
-          cell.set("background","red");
+          
+          
           cell.on("change:item", function(widget, action) {
-            companyView.set("text",  action.company);
+            logoView.set("image",  {src:IMAGE_PATH+action.logo});
+            imageView.set("image",{src:IMAGE_PATH+action.image});
             actionView.set("text", action.title);
           });
         }
