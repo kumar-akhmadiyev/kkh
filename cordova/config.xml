@@ -7,5 +7,4 @@
   <author email="dev@tabrisjs.com" href="https://tabrisjs.com">
    Tabris.js Team
   </author>
-  <plugin name="https://github.com/petermetz/cordova-plugin-ibeacon.git" version="1.2.0" />
 </widget>
